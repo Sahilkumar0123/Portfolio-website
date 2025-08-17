@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to futuristic cyberpunk color scheme with glassmorphism */
+  --background: #0a0a0a; /* Deep black for cyberpunk feel */
+  --foreground: #ffffff; /* Pure white for maximum contrast */
+  --card: rgba(255, 255, 255, 0.05); /* Glassmorphism effect */
+  --card-foreground: #ffffff; /* Text on cards */
+  --popover: rgba(255, 255, 255, 0.1); /* For popover backgrounds */
+  --popover-foreground: #ffffff; /* Text in popovers */
+  --primary: #0891b2; /* Cyan primary for futuristic feel */
+  --primary-foreground: #ffffff; /* Text on primary buttons */
+  --secondary: #8b5cf6; /* Purple secondary for neon accents */
+  --secondary-foreground: #ffffff; /* Text on secondary buttons */
+  --muted: rgba(255, 255, 255, 0.4); /* Muted text */
+  --muted-foreground: #a1a1aa; /* Muted foreground */
+  --accent: #ff007f; /* Hot pink neon accent */
+  --accent-foreground: #ffffff; /* Text on accent elements */
+  --destructive: #e63946; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* Text on destructive buttons */
+  --border: rgba(255, 255, 255, 0.1); /* Subtle borders */
+  --input: rgba(255, 255, 255, 0.05); /* Input glassmorphism */
+  --ring: rgba(8, 145, 178, 0.5); /* Cyan ring for focus */
+  --chart-1: #8b5cf6; /* Purple for charts */
+  --chart-2: #ff007f; /* Pink for charts */
+  --chart-3: #0891b2; /* Cyan for charts */
+  --chart-4: #00ff9f; /* Green for charts */
+  --chart-5: #ffcc00; /* Yellow for charts */
+  --radius: 1rem; /* Larger radius for modern feel */
+  --sidebar: rgba(0, 0, 0, 0.8); /* Dark sidebar */
+  --sidebar-foreground: #ffffff; /* Sidebar text */
+  --sidebar-primary: #0891b2; /* Primary sidebar accent */
+  --sidebar-primary-foreground: #ffffff; /* Text on primary sidebar */
+  --sidebar-accent: #8b5cf6; /* Sidebar accent */
+  --sidebar-accent-foreground: #ffffff; /* Text on sidebar accents */
+  --sidebar-border: rgba(255, 255, 255, 0.1); /* Sidebar borders */
+  --sidebar-ring: rgba(255, 255, 255, 0.2); /* Sidebar focus ring */
+}
+
+.dark {
+  /* Dark mode uses same values since we're already dark */
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: rgba(255, 255, 255, 0.05);
+  --card-foreground: #ffffff;
+  --popover: rgba(255, 255, 255, 0.1);
+  --popover-foreground: #ffffff;
+  --primary: #0891b2;
+  --primary-foreground: #ffffff;
+  --secondary: #8b5cf6;
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.4);
+  --muted-foreground: #a1a1aa;
+  --accent: #ff007f;
+  --accent-foreground: #ffffff;
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: rgba(8, 145, 178, 0.5);
+  --chart-1: #8b5cf6;
+  --chart-2: #ff007f;
+  --chart-3: #0891b2;
+  --chart-4: #00ff9f;
+  --chart-5: #ffcc00;
+  --sidebar: rgba(0, 0, 0, 0.8);
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #0891b2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #8b5cf6;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: rgba(255, 255, 255, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Updated to futuristic fonts */
+  --font-heading: "Poppins", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    /* Added cyberpunk background pattern */
+    background-image: radial-gradient(circle at 25% 25%, rgba(8, 145, 178, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255, 0, 127, 0.05) 0%, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Added glassmorphism utility classes */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Added neon glow effects */
+  .neon-glow {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;
+  }
+
+  .neon-text {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+
+  /* Added floating animation */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Added pulse animation for neon elements */
+  @keyframes neon-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .neon-pulse {
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* Updated Google Fonts import for futuristic fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap");
